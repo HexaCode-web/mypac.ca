@@ -54,7 +54,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 60px;
   min-height: 370px;
 }
 .cards-wrapper .Card {
