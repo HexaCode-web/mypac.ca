@@ -113,10 +113,12 @@ body {
   transition: 0.3s, background-size 0.3s 0.3s;
   scale: 1.1;
 }
-@media (min-width: 768px) {
-  .cards-wrapper:hover .Card:not(:hover) {
-    filter: blur(5px); /* Adjust the blur intensity as per your preference */
-  }
+.Left {
+  filter: blur(0);
+}
+
+.Right {
+  filter: blur(0);
 }
 .Links-List {
   list-style: none;
