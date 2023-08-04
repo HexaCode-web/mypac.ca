@@ -20,6 +20,7 @@
   border: 0px inset #ffffff;
 }
 :root {
+  font-size: 16px;
   --BorderColors: #e4ab02;
 
   --backgroundColor: #402e32;
@@ -35,12 +36,35 @@ body {
   overflow-x: hidden;
 }
 .container {
+  position: relative;
+  z-index: 1; /* Ensure content appears above the video */
   color: var(--textColor);
   margin: 20px 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  max-width: 90% !important;
   flex-direction: column;
+}
+.video-background {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+/* Style the video to cover the container */
+.video-background video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.text-wrapper h2 {
+  text-align: center;
 }
 .text-wrapper {
   display: flex;
@@ -54,7 +78,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 60px;
+  gap: 100px;
   min-height: 370px;
 }
 .cards-wrapper .Card {
@@ -89,8 +113,10 @@ body {
   transition: 0.3s, background-size 0.3s 0.3s;
   scale: 1.1;
 }
-.cards-wrapper:hover .Card:not(:hover) {
-  filter: blur(5px); /* Adjust the blur intensity as per your preference */
+@media (min-width: 768px) {
+  .cards-wrapper:hover .Card:not(:hover) {
+    filter: blur(5px); /* Adjust the blur intensity as per your preference */
+  }
 }
 .Links-List {
   list-style: none;
@@ -103,7 +129,7 @@ body {
 }
 .button-23 {
   background-color: transparent;
-  border: 1px solid var(--backgroundColor);
+  border: 1px solid var(--BorderColors);
   border-radius: 8px;
   box-sizing: border-box;
   color: var(--textColor);
@@ -111,7 +137,7 @@ body {
   display: inline-block;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
     "Helvetica Neue", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 20px;
   margin: 0;
@@ -142,4 +168,57 @@ body {
   transition: 0.2s all;
   border: 1px solid transparent;
   background-color: var(--BorderColors);
+}
+@media (max-width: 450px) {
+  .video-background {
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
+  }
+  body {
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  :root {
+    font-size: 12px;
+  }
+  .cards-wrapper {
+    margin: 20px 0;
+    gap: 20px;
+    flex-direction: column;
+  }
+  .cards-wrapper .Card {
+    width: 90%;
+    height: 100%;
+  }
+  .button-23.Main {
+    width: 170px;
+  }
+  .Links-List {
+    flex-direction: column;
+  }
+}
+@media (max-width: 750px) {
+  :root {
+    font-size: 14px;
+  }
+  body {
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .cards-wrapper {
+    margin: 20px 0;
+    gap: 20px;
+    flex-direction: column;
+  }
+  .cards-wrapper .Card {
+    width: 90%;
+    height: 100%;
+  }
+  .button-23.Main {
+    width: 170px;
+  }
+  .Links-List {
+    flex-direction: column;
+  }
 }
